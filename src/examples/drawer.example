@@ -1,0 +1,86 @@
+import { DrawerNavigator } from 'react-navigation';
+
+class ScreenA extends Component {
+  static navigationOptions = {
+    drawerLabel: 'Screen A',
+    drawerIcon: ({ focused, tintColor }) => (
+      <Ionicons
+        name={`ios-bowtie${focused ? '' : '-outline'}`}
+        size={25}
+        color={tintColor}
+      />
+    ),
+  };
+
+  render() {
+    return (
+      <View>
+        <Text>Screen A</Text>
+      </View>
+    )
+  }
+}
+
+class ScreenB extends Component {
+  static navigationOptions = {
+    drawerLabel: 'Screen B',
+    drawerIcon: ({ focused, tintColor }) => (
+      <Ionicons
+        name={`ios-bug${focused ? '' : '-outline'}`}
+        size={25}
+        color={tintColor}
+      />
+    ),
+  };
+
+  render() {
+    return (
+      <View>
+        <Text>Screen B</Text>
+      </View>
+    )
+  }
+}
+
+class ScreenC extends Component {
+  static navigationOptions = {
+    drawerLabel: 'Screen C',
+    drawerIcon: ({ focused, tintColor }) => (
+      <Ionicons
+        name={`ios-contact${focused ? '' : '-outline'}`}
+        size={25}
+        color={tintColor}
+      />
+    ),
+  };
+
+  render() {
+    return (
+      <View>
+        <Text>Screen C</Text>
+      </View>
+    )
+  }
+}
+
+const MyDrawerNavigator = DrawerNavigator(
+  {
+    screenA: { screen: ScreenA },
+    screenB: { screen: ScreenB },
+    screenC: { screen: ScreenC },
+  }, {
+    drawerBackgroundColor: '#263238',
+    contentOptions: {
+      activeTintColor: '#F44336',
+      inactiveTintColor: '#FFF',
+    },
+  }
+);
+
+export default class App extends Component {
+  render() {
+    return (
+      <MyDrawerNavigator />
+    );
+  }
+}

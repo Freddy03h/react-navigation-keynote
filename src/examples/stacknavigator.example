@@ -1,0 +1,138 @@
+import { StackNavigator } from 'react-navigation';
+
+class ScreenA extends Component {
+  static navigationOptions = {
+    title: 'Screen A',
+  };
+
+  handlePressButton = () => {
+    this.props.navigation.navigate('screenB', {
+      id: 42,
+      title: 'Title 42',
+    });
+  };
+
+  render() {
+    return (
+      <View>
+        <Text>Screen A</Text>
+        <TouchableOpacity
+          onPress={this.handlePressButton}
+        >
+          <Text>Navigate to B</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+}
+
+class ScreenB extends Component {
+  static navigationOptions = ({ navigation }) => {
+    const params = navigation.state.params || {};
+    return {
+      title: params.title,
+    };
+  };
+
+  handlePressBack = () => {
+    this.props.navigation.goBack();
+  };
+
+  handlePressButton = () => {
+    this.props.navigation.navigate('screenC');
+  };
+
+  render() {
+    const { navigation } = this.props
+    const params = navigation.state.params || {};
+    return (
+      <View>
+        <Text>Screen B</Text>
+        <Text>id: {params.id}</Text>
+        <TouchableOpacity
+          onPress={this.handlePressBack}
+        >
+          <Text>Back</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={this.handlePressButton}
+        >
+          <Text>Navigate to C</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+}
+
+class ScreenC extends Component {
+  static navigationOptions = (config) => {
+    const { navigation, navigationOptions } = config;
+    const params = navigation.state.params || {};
+
+    return {
+      title: 'Counter',
+      headerRight: (
+        <Button
+          onPress={params.increaseCount}
+          title="+1"
+          color={navigationOptions.headerTintColor}
+        />
+      ),
+    };
+  };
+
+  state = {
+    count: 0,
+  };
+
+  componentWillMount() {
+    this.props.navigation.setParams({
+      increaseCount: this._increaseCount
+    });
+  }
+
+  _increaseCount = () => {
+    this.setState({ count: this.state.count + 1 });
+  };
+
+  render() {
+    return (
+      <View>
+        <Text>Screen C</Text>
+        <Text>Counter : {this.state.count}</Text>
+      </View>
+    );
+  }
+}
+
+const MyStackNav = StackNavigator(
+  {
+    screenA: {
+      screen: ScreenA,
+    },
+    screenB: {
+      screen: ScreenB,
+    },
+    screenC: {
+      screen: ScreenC,
+    },
+  },
+  {
+    initialRouteName: 'screenA',
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: '#263238',
+      },
+      headerTintColor: 'white',
+      headerTruncatedBackTitle: 'Retour',
+    },
+  }
+);
+
+export default class App extends Component {
+  render() {
+    return (
+      <MyStackNav />
+    );
+  }
+}

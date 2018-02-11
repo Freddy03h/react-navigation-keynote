@@ -1,0 +1,115 @@
+import {
+  TabNavigator,
+  StackNavigator,
+} from 'react-navigation';
+
+class ScreenA extends Component {
+  static navigationOptions = {
+    title: 'Screen A',
+    tabBarIcon: ({ focused, tintColor }) => (
+      <Ionicons
+        name={`ios-bowtie${focused ? '' : '-outline'}`}
+        size={25}
+        color={tintColor}
+      />
+    ),
+  };
+
+  handlePressButton = () => {
+    this.props.navigation.navigate('screenB');
+  };
+
+  render() {
+    return (
+      <View>
+        <Text>Screen A</Text>
+        <TouchableOpacity
+          onPress={this.handlePressButton}
+        >
+          <Text>Navigate to B</Text>
+        </TouchableOpacity>
+      </View>
+    )
+  }
+}
+
+class ScreenB extends Component {
+  static navigationOptions = {
+    title: 'Screen B',
+    tabBarIcon: ({ focused, tintColor }) => (
+      <Ionicons
+        name={`ios-bug${focused ? '' : '-outline'}`}
+        size={25}
+        color={tintColor}
+      />
+    ),
+  };
+
+  render() {
+    return (
+      <View>
+        <Text>Screen B</Text>
+      </View>
+    )
+  }
+}
+
+class ScreenC extends Component {
+  static navigationOptions = {
+    title: 'Screen C',
+    tabBarIcon: ({ focused, tintColor }) => (
+      <Ionicons
+        name={`ios-contact${focused ? '' : '-outline'}`}
+        size={25}
+        color={tintColor}
+      />
+    ),
+  };
+
+  render() {
+    return (
+      <View>
+        <Text>Screen C</Text>
+      </View>
+    )
+  }
+}
+
+const MyTabNavigator = TabNavigator(
+  {
+    screenA: { screen: ScreenA },
+    screenC: { screen: ScreenC },
+  }, {
+    tabBarOptions: {
+      style: {
+        backgroundColor: '#263238',
+      },
+      activeTintColor: '#F44336',
+      inactiveTintColor: '#FFF',
+    },
+  }
+);
+
+const MyStackNav = StackNavigator(
+  {
+    myTab: { screen: MyTabNavigator },
+    screenB: { screen: ScreenB },
+  }, {
+    initialRouteName: 'myTab',
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: '#263238',
+      },
+      headerTintColor: 'white',
+      headerTruncatedBackTitle: 'Retour',
+    }
+  }
+);
+
+export default class App extends Component {
+  render() {
+    return (
+      <MyStackNav />
+    );
+  }
+}

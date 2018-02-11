@@ -1,0 +1,154 @@
+import {
+  TabNavigator,
+  StackNavigator,
+  } from 'react-navigation';
+
+class ScreenA extends Component {
+  static navigationOptions = {
+    headerTitle: 'Screen A',
+  };
+
+  handlePressButton = () => {
+    this.props.navigation.navigate('screenB')
+  };
+
+  render() {
+    return (
+      <View>
+        <Text>Screen A</Text>
+        <TouchableOpacity
+          onPress={this.handlePressButton}
+        >
+          <Text>{'Navigate to B'}</Text>
+        </TouchableOpacity>
+      </View>
+    )
+  }
+}
+
+class ScreenB extends Component {
+  static navigationOptions = {
+    headerTitle: 'Screen B',
+  };
+
+  handlePressButton = () => {
+    this.props.navigation.navigate('myModal')
+  };
+
+  render() {
+    return (
+      <View>
+        <Text>Screen B</Text>
+        <TouchableOpacity
+          onPress={this.handlePressButton}
+        >
+          <Text>{'Open Modal'}</Text>
+        </TouchableOpacity>
+      </View>
+    )
+  }
+}
+
+class ScreenC extends Component {
+  static navigationOptions = {
+    title: 'Screen C',
+    tabBarIcon: ({ focused, tintColor }) => (
+      <Ionicons
+        name={`ios-contact${focused ? '' : '-outline'}`}
+        size={25}
+        color={tintColor}
+      />
+    ),
+  };
+
+  render() {
+    return (
+      <View>
+        <Text>Screen C</Text>
+      </View>
+    )
+  }
+}
+
+class MyModal extends Component {
+  handlePressButton = () => {
+    this.props.navigation.goBack();
+  };
+
+  render() {
+    return (
+      <View>
+        <Text>Modal</Text>
+        <TouchableOpacity
+          onPress={this.handlePressButton}
+        >
+          <Text>{'Close'}</Text>
+        </TouchableOpacity>
+      </View>
+    )
+  }
+}
+
+const MyStackNav = StackNavigator(
+  {
+    screenA: { screen: ScreenA },
+    screenB: { screen: ScreenB },
+  }, {
+    initialRouteName: 'screenA',
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: '#263238',
+      },
+      headerTintColor: 'white',
+      headerTruncatedBackTitle: 'Retour',
+    }
+  }
+);
+
+const MyTabNavigator = TabNavigator(
+  {
+    myStack: {
+      screen: MyStackNav,
+      navigationOptions: {
+        title: 'MyStack',
+        tabBarIcon: ({ focused, tintColor }) => (
+          <Ionicons
+            name={
+              `ios-home${focused ? '' : '-outline'}`
+            }
+            size={25}
+            color={tintColor}
+          />
+        ),
+      },
+    },
+    screenC: { screen: ScreenC },
+  }, {
+    tabBarOptions: {
+      style: {
+        backgroundColor: '#263238',
+      },
+      activeTintColor: '#F44336',
+      inactiveTintColor: '#FFF',
+    },
+  }
+);
+
+const MyModalStackNav = StackNavigator(
+  {
+    app: { screen: MyTabNavigator },
+    myModal: { screen: MyModal },
+  }, {
+    initialRouteName: 'app',
+    headerMode: 'none',
+    mode: 'modal',
+  }
+);
+
+export default class App extends Component {
+  render() {
+    return (
+      <MyModalStackNav />
+    );
+  }
+}
