@@ -50,6 +50,21 @@ const screenImageStyle = {
   margin: 30,
 }
 
+const screenImageStyleAndroid = {
+  margin: 30,
+  width: 720/2.8,
+}
+
+const screenImageStyleIos = {
+  margin: 30,
+  width: 886/3.6,
+}
+
+const screenImageStyleIosBig = {
+  margin: 0,
+  width: 886/3,
+}
+
 export default class Presentation extends React.Component {
   render() {
     return (
@@ -108,8 +123,8 @@ export default class Presentation extends React.Component {
             Renders one screen at a time and provides transitions between screens. When a new screen is opened it is placed on top of the stack.
           </Text>
           <div>
-            <img src={images.iphoneStack} style={screenImageStyle} />
-            <img src={images.androidStack} style={screenImageStyle} />
+            <video src={require("file-loader!../assets/stacknavigator-ios.MP4")} style={screenImageStyleIos} muted autoPlay loop playsInline></video>
+            <video src={require("file-loader!../assets/stacknavigator-android.mp4")} style={screenImageStyleAndroid} muted autoPlay loop playsInline></video>
           </div>
         </Slide>
 
@@ -142,8 +157,8 @@ export default class Presentation extends React.Component {
             Renders a tab bar that lets the user switch between several screens.
           </Text>
           <div>
-            <img src={images.iphoneTabs} style={screenImageStyle} />
-            <img src={images.androidTabs} style={screenImageStyle} />
+            <video src={require("file-loader!../assets/tabnavigator-ios.MP4")} style={screenImageStyleIos} muted autoPlay loop playsInline></video>
+            <video src={require("file-loader!../assets/tabnavigator-android.mp4")} style={screenImageStyleAndroid} muted autoPlay loop playsInline></video>
           </div>
         </Slide>
 
@@ -166,8 +181,8 @@ export default class Presentation extends React.Component {
             Provides a drawer that slides in from the left of the screen.
           </Text>
           <div>
-            <img src={''} style={screenImageStyle} />
-            <img src={''} style={screenImageStyle} />
+            <video src={require("file-loader!../assets/drawernavigator-ios.MP4")} style={screenImageStyleIos} muted autoPlay loop playsInline></video>
+            <video src={require("file-loader!../assets/drawernavigator-android.mp4")} style={screenImageStyleAndroid} muted autoPlay loop playsInline></video>
           </div>
         </Slide>
 
@@ -212,7 +227,7 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide>
-          <p>[Screen]</p>
+          <video src={require("file-loader!../assets/nested1-ios.MP4")} style={screenImageStyleIosBig} muted autoPlay loop playsInline></video>
         </Slide>
 
         <CodeSlide
@@ -233,7 +248,7 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide>
-          <p>[Screen]</p>
+          <video src={require("file-loader!../assets/nested2-ios.MP4")} style={screenImageStyleIosBig} muted autoPlay loop playsInline></video>
         </Slide>
 
         <CodeSlide
@@ -275,7 +290,7 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide>
-          <p>[Screen]</p>
+          <video src={require("file-loader!../assets/modal-ios.MP4")} style={screenImageStyleIosBig} muted autoPlay loop playsInline></video>
         </Slide>
 
         <CodeSlide
