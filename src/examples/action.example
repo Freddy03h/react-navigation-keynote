@@ -1,0 +1,29 @@
+const action =
+  MyStack.router.getActionForPathAndParams('screenB');
+
+{
+  type: "Navigation/NAVIGATE",
+  routeName: "screenB",
+}
+
+///
+
+const newState =
+  MyStack.router.getStateForAction(action, state);
+
+{
+  isTransitioning: false,
+  index: 1,
+  routes: [
+    {
+      key: "Init-id-1518479183221-0",
+      params: undefined,
+      routeName: "screenA"
+    },
+    {
+      key: "id-1518479414651-1",
+      params: undefined,
+      routeName: "screenB"
+    },
+  ]
+}

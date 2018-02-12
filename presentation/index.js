@@ -14,6 +14,7 @@ import {
   Text,
   Code,
   Link,
+  S,
 } from "spectacle";
 import CodeSlide from 'spectacle-code-slide';
 
@@ -34,10 +35,10 @@ require("spectacle/lib/themes/default/index.css");
 const images = {
   freddy: require("../assets/freddy.jpg"),
   twitter: require("../assets/twitter.png"),
-  iphoneStack: require("../assets/iphone-stack.gif"),
-  androidStack: require("../assets/android-stack.gif"),
-  iphoneTabs: require("../assets/iphone-tabs.gif"),
-  androidTabs: require("../assets/android-tabs.gif"),
+  mangacollecSiteHome: require("../assets/mangacollec-site-home.png"),
+  mangacollecSiteVolume: require("../assets/mangacollec-site-volume.png"),
+  mangacollecAppHome: require("../assets/mangacollec-app-home.jpg"),
+  mangacollecAppVolume: require("../assets/mangacollec-app-volume.jpg"),
 };
 
 preloader(images);
@@ -62,6 +63,11 @@ const screenImageStyleIos = {
 
 const screenImageStyleIosBig = {
   margin: 0,
+  width: 886/3,
+}
+
+const screenImageStyleIosContent = {
+  margin: '0 30px',
   width: 886/3,
 }
 
@@ -94,25 +100,31 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide bgColor="tertiary">
-          <Text>[ Screenshot Home Mangacollec Website ]</Text>
+          <img className="content" src={images.mangacollecSiteHome} />
         </Slide>
 
         <Slide bgColor="tertiary">
-          <Text>[ Screenshot Volume Detail Mangacollec Website ]</Text>
+          <img className="content" src={images.mangacollecSiteVolume} />
         </Slide>
 
         <Slide bgColor="tertiary">
-          <Text>[ Screenshot Home Mangacollec Mobile App ]</Text>
-        </Slide>
-
-        <Slide bgColor="tertiary">
-          <Text>[ Screenshot Volume Detail Mangacollec Mobile App ]</Text>
+          <img className="content" style={screenImageStyleIosContent} src={images.mangacollecAppHome} />
+          <img className="content" style={screenImageStyleIosContent} src={images.mangacollecAppVolume} />
         </Slide>
 
         <Slide>
-          <Heading size={2} fit caps textColor="secondary">
-            (Historique) ?
+          <Heading size={3} caps textColor="secondary">
+            Other solutions
           </Heading>
+          <List textColor="tertiary" margin="1em 0px 1em 13%">
+            <ListItem>NavigatorIOS : <S type="italic" textColor="secondary">wrapper around <Code>UINavigationController</Code></S></ListItem>
+            <ListItem>Navigator : <S type="italic" textColor="secondary">deprecated since 0.44.0</S></ListItem>
+            <ListItem>NavigatorExperimental : <S type="italic" textColor="secondary">experimental JS based solution</S></ListItem>
+            <ListItem>ExNavigation : <S type="italic" textColor="secondary">project in maintenance mode</S></ListItem>
+            <ListItem>react-native-router-flux : <S type="italic" textColor="secondary">v4 based on React-Navigation</S></ListItem>
+            <ListItem>native-navigation : <S type="italic" textColor="secondary">Airbnb native solution</S></ListItem>
+            <ListItem>react-native-navigation : <S type="italic" textColor="secondary">Wix native solution</S></ListItem>
+          </List>
         </Slide>
 
         <Slide>
@@ -200,16 +212,16 @@ export default class Presentation extends React.Component {
         <Slide bgColor="secondary">
           <Heading caps size={1} textColor="tertiary" textAlign="left" margin="0.5em auto">
             <div style={{display: 'inline-flex', width: '0.74em', height: '0.74em', marginRight: '0.5em'}}>
-              <svg style={{margin: 'auto', fill: 'white', width: '100%', transformOrigin: 'center 0', transform: 'scale(1.3)'}} x="0px" y="0px" viewBox="0 0 60 60" enable-background="new 0 0 60 48" ><path d="M53,14V7h-7V0H0v34h7v7h7v7h46V14H53z M2,32V2h42v5H7v25H2z M9,39v-5V9h37h5v5H14v25H9z M58,46H16v-5V16h37  h5V46z"/></svg>
+              <svg style={{margin: 'auto', fill: 'white', width: '100%', transformOrigin: 'center center', transform: 'scale(1.22)'}} x="0px" y="0px" viewBox="0 0 54.95 53.3" enable-background="new 0 0 54.95 53.3"><path d="M45.3,21.12l9.66-5.52L27.48,0L0,15.6l9.66,5.52L0,26.6l9.66,5.52L0,37.6l27.48,15.7l27.48-15.7l-9.66-5.48  l9.66-5.52L45.3,21.12z M27.48,2.3l23.44,13.31L27.48,29L4.04,15.61L27.48,2.3z M11.67,22.27l15.8,9.03l15.8-9.03l7.63,4.33  L27.48,40L4.04,26.61L11.67,22.27z M50.91,37.61L27.48,51L4.04,37.61l7.63-4.33l15.8,9.03l15.8-9.03L50.91,37.61z"/></svg>
             </div>
-            Tabs
+            Stack
           </Heading>
 
           <Heading caps size={1} textColor="tertiary" textAlign="left" margin="0.5em auto">
             <div style={{display: 'inline-flex', width: '0.74em', height: '0.74em', marginRight: '0.5em'}}>
-              <svg style={{margin: 'auto', fill: 'white', width: '100%', transformOrigin: 'center center', transform: 'scale(1.22)'}} x="0px" y="0px" viewBox="0 0 54.95 53.3" enable-background="new 0 0 54.95 53.3"><path d="M45.3,21.12l9.66-5.52L27.48,0L0,15.6l9.66,5.52L0,26.6l9.66,5.52L0,37.6l27.48,15.7l27.48-15.7l-9.66-5.48  l9.66-5.52L45.3,21.12z M27.48,2.3l23.44,13.31L27.48,29L4.04,15.61L27.48,2.3z M11.67,22.27l15.8,9.03l15.8-9.03l7.63,4.33  L27.48,40L4.04,26.61L11.67,22.27z M50.91,37.61L27.48,51L4.04,37.61l7.63-4.33l15.8,9.03l15.8-9.03L50.91,37.61z"/></svg>
+              <svg style={{margin: 'auto', fill: 'white', width: '100%', transformOrigin: 'center 0', transform: 'scale(1.3)'}} x="0px" y="0px" viewBox="0 0 60 60" enable-background="new 0 0 60 48" ><path d="M53,14V7h-7V0H0v34h7v7h7v7h46V14H53z M2,32V2h42v5H7v25H2z M9,39v-5V9h37h5v5H14v25H9z M58,46H16v-5V16h37  h5V46z"/></svg>
             </div>
-            Stack
+            Tabs
           </Heading>
         </Slide>
 
@@ -223,7 +235,7 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide bgColor="tertiary">
-          <TabDraw data={[{title: 'MyStack', stack: [{title: 'Screen A'}, {title: 'Screen B'}]}, {title: 'Screen C'}]} />
+          <TabDraw minWidth={260} minHeight={390} data={[{title: 'MyStack', stack: [{title: 'Screen A'}, {title: 'Screen B'}]}, {title: 'Screen C'}]} />
         </Slide>
 
         <Slide>
@@ -244,7 +256,7 @@ export default class Presentation extends React.Component {
         />
 
         <Slide bgColor="tertiary">
-          <StackDraw data={[{title: 'MyTab', tabs: [{title: 'Screen A'}, {title: 'Screen B'}]}, {title: 'Screen C'}]} />
+          <StackDraw minWidth={260} minHeight={390} data={[{title: 'MyTab', tabs: [{title: 'Screen A'}, {title: 'Screen B'}]}, {title: 'Screen C'}]} />
         </Slide>
 
         <Slide>
@@ -266,7 +278,7 @@ export default class Presentation extends React.Component {
 
         <Slide>
           <Heading size={2} caps textColor="secondary">
-            Modal
+            Modal use case
           </Heading>
           <Text textColor="tertiary" margin="3.5rem auto 0">
             Use a StackNavigator at the root of your app
@@ -336,17 +348,46 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide>
-          <p>Navigator</p>
-          <ul>
-            <li>Router</li>
-            <li>State</li>
-            <li>Action</li>
-            <li>View</li>
-          </ul>
+          <Heading size={3} caps textColor="secondary">
+            Navigator
+          </Heading>
+          <List textColor="tertiary" margin="1em 0px 1em 31%">
+            <ListItem>View</ListItem>
+            <ListItem>Router</ListItem>
+            <ListItem style={{listStyle: 'none'}}>
+              <List textColor="tertiary">
+                <ListItem>State</ListItem>
+                <ListItem>Action</ListItem>
+              </List>
+            </ListItem>
+          </List>
         </Slide>
 
+        <CodeSlide
+          transition={[]}
+          lang="js"
+          code={require("raw-loader!../src/examples/action.example")}
+          ranges={[
+            { loc: [0, 30], title: "State and Action" },
+            { loc: [0, 2] },
+            { loc: [3, 7] },
+            { loc: [10, 12] },
+            { loc: [13, 29] },
+          ]}
+        />
 
         <Slide>
+          <Heading size={3} caps textColor="secondary">
+            Other things
+          </Heading>
+          <List textColor="tertiary" margin="1em 0px 1em 20%">
+            <ListItem>Declare path for deep linking</ListItem>
+            <ListItem>iPhone X support with <Code>&lt;SafeAreaView&gt;</Code></ListItem>
+            <ListItem>Build your own Navigator</ListItem>
+          </List>
+        </Slide>
+
+        {/*<Slide>
           <Heading size={4} caps textColor="secondary" margin="-4rem auto 0.5rem">
             References
           </Heading>
@@ -356,7 +397,7 @@ export default class Presentation extends React.Component {
             <ListItem><Link href="https://reactnavigation.org/" target="_blank">React Navigation</Link></ListItem>
           </List>
 
-        </Slide>
+        </Slide>*/}
 
         <Slide>
           <Heading size={1} caps textColor="tertiary">
