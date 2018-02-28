@@ -63,7 +63,7 @@ const screenImageStyleIos = {
 
 const screenImageStyleIosBig = {
   margin: 0,
-  width: 886/3,
+  width: 886/2.8,
 }
 
 const screenImageStyleIosContent = {
@@ -238,7 +238,7 @@ export default class Presentation extends React.Component {
           <TabDraw minWidth={260} minHeight={390} data={[{title: 'MyStack', stack: [{title: 'Screen A'}, {title: 'Screen B'}]}, {title: 'Screen C'}]} />
         </Slide>
 
-        <Slide>
+        <Slide className="slide-no-padding">
           <video src={require("file-loader!../assets/nested1-ios.MP4")} style={screenImageStyleIosBig} muted autoPlay loop playsInline></video>
         </Slide>
 
@@ -256,10 +256,10 @@ export default class Presentation extends React.Component {
         />
 
         <Slide bgColor="tertiary">
-          <StackDraw minWidth={260} minHeight={390} data={[{title: 'MyTab', tabs: [{title: 'Screen A'}, {title: 'Screen B'}]}, {title: 'Screen C'}]} />
+          <StackDraw minWidth={260} minHeight={390} data={[{title: 'MyTab', tabs: [{title: 'Screen A'}, {title: 'Screen C'}]}, {title: 'Screen B'}]} />
         </Slide>
 
-        <Slide>
+        <Slide className="slide-no-padding">
           <video src={require("file-loader!../assets/nested2-ios.MP4")} style={screenImageStyleIosBig} muted autoPlay loop playsInline></video>
         </Slide>
 
@@ -301,7 +301,7 @@ export default class Presentation extends React.Component {
           ]} />
         </Slide>
 
-        <Slide>
+        <Slide className="slide-no-padding">
           <video src={require("file-loader!../assets/modal-ios.MP4")} style={screenImageStyleIosBig} muted autoPlay loop playsInline></video>
         </Slide>
 
